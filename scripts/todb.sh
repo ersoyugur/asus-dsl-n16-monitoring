@@ -26,7 +26,7 @@ if [ "$4" = "pingo" ] || [ "$4" = "rtemp" ]; then
     payload="$name $columnspart1=\"$points1\",$columnspart2=$points2 $(date +%s)000000000"
     echo $payload
     # curl -i -XPOST 'http://localhost:8086/write?db=mydb' --data-binary "router_ping_ext,dst=google ms=62.6 ${CURDATE}000000000"
-    wget --quiet --post-data "$payload" "http://192.168.1.99:8086/write?db=mydb" -O /dev/null
+    wget --quiet --post-data "$payload" "http://$dbhost/write?db=mydb" -O /dev/null
 fi
 
 if [ "$4" = "rmem" ] || [ "$4" = "rassoc" ]; then
@@ -40,7 +40,7 @@ if [ "$4" = "rmem" ] || [ "$4" = "rassoc" ]; then
     payload="$name $columnspart1=$points1,$columnspart2=$points2 $(date +%s)000000000"
     echo $payload
     # curl -i -XPOST 'http://localhost:8086/write?db=mydb' --data-binary "router_ping_ext,dst=google ms=62.6 ${CURDATE}000000000"
-    wget --quiet --post-data "$payload" "http://192.168.1.99:8086/write?db=mydb" -O /dev/null
+    wget --quiet --post-data "$payload" "http://$dbhost/write?db=mydb" -O /dev/null
 fi
 
 if [ "$4" = "rnet" ]; then
